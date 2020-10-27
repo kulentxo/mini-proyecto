@@ -7,12 +7,16 @@ import julenmartin.pojo.Grafica;
 import julenmartin.pojo.Procesador;
 import julenmartin.pojo.Producto;
 import julenmartin.pojo.discoDuro;
+import julenmartin.pojo.servicioDomicilio;
+import julenmartin.pojo.servicioTienda;
 
 public class Principal {
 
 	static final char OPC_A = 'A';
 	static final char OPC_B = 'B';
 	static final char OPC_C = 'C';
+	static final int OPC1 = 1;
+	static final int OPC2 = 2;
 
 	public static void main(String[] args) {
 
@@ -28,42 +32,102 @@ public class Principal {
 			case OPC_A:
 				mostrarMenuA();
 				opc = sc.nextLine().charAt(0);
-				if (!(Character.toUpperCase(opc) != 'A' && Character.toUpperCase(opc) != 'B'
-						&& Character.toUpperCase(opc) != 'C')) {
-					switch (opc) {
-					case OPC_A:
-						discoduro(sc, productos);
-						break;
-					case OPC_B:
-						grafica(sc, productos);
-						break;
-					case OPC_C:
-						procesador(sc, productos);
-						break;
-					default:
-						System.out.println("No existe esa opcion");
-						break;
-					}
-				} else {
-					System.out.println("No existe esa opcion");
-				}
+				opcionA(sc, opc, productos);
 				break;
-
 			case OPC_B:
 				opcionB(productos, sc);
 				break;
-
 			case OPC_C:
-				// TODO opcion c
-				mostrarMenuA();
+				opcionC(sc, productos);
 				break;
-
 			default:
 				break;
 			}
 
 		} while (Character.toUpperCase(resp) != 'A' && Character.toUpperCase(resp) != 'B'
 				&& Character.toUpperCase(resp) != 'C');
+	}
+
+	private static void opcionC(Scanner sc, ArrayList<Producto> productos) {
+		// TODO faltan los try catch
+		int opc;
+		mostrarMenuC();
+		opc = Integer.parseInt(sc.nextLine());
+		switch (opc) {
+		case 1:
+			servicioDomicilio domicilio = new servicioDomicilio();
+
+			System.out.println("Introduce una referencia");
+			domicilio.setReferencia(sc.nextLine());
+
+			System.out.println("Introduce precio");
+			domicilio.setPrecio(Float.parseFloat(sc.nextLine()));
+
+			System.out.println("Introduce el codigo");
+			domicilio.setCodigo(Integer.parseInt(sc.nextLine()));
+
+			System.out.println("Introduce las horas minimas");
+			domicilio.setMinimoHoras(Integer.parseInt(sc.nextLine()));
+
+			System.out.println("Introduce el gasto adicional");
+			domicilio.setGastoAdicional(Float.parseFloat(sc.nextLine()));
+
+			productos.add(domicilio);
+			break;
+		case 2:
+			servicioTienda tienda = new servicioTienda();
+
+			System.out.println("Introduce una referencia");
+			tienda.setReferencia(sc.nextLine());
+
+			System.out.println("Introduce precio");
+			tienda.setPrecio(Float.parseFloat(sc.nextLine()));
+
+			System.out.println("Introduce el codigo");
+			tienda.setCodigo(Integer.parseInt(sc.nextLine()));
+
+			System.out.println("Introduce las horas minimas");
+			tienda.setMinimoHoras(Integer.parseInt(sc.nextLine()));
+
+			System.out.println("Introduce el empleado");
+			tienda.setEmpleado(sc.nextLine());
+
+			productos.add(tienda);
+			break;
+		default:
+			break;
+		}
+	}
+
+	private static void mostrarMenuC() {
+
+		System.out.println("***********SERVICIO***********");
+		System.out.println("1.- Servicio a domicilio");
+		System.out.println("2.- Servicio en tienda");
+
+	}
+
+	private static void opcionA(Scanner sc, char opc, ArrayList<Producto> productos) {
+
+		if (!(Character.toUpperCase(opc) != 'A' && Character.toUpperCase(opc) != 'B'
+				&& Character.toUpperCase(opc) != 'C')) {
+			switch (opc) {
+			case OPC_A:
+				discoduro(sc, productos);
+				break;
+			case OPC_B:
+				grafica(sc, productos);
+				break;
+			case OPC_C:
+				procesador(sc, productos);
+				break;
+			default:
+				System.out.println("No existe esa opcion");
+				break;
+			}
+		} else {
+			System.out.println("No existe esa opcion");
+		}
 	}
 
 	private static void opcionB(ArrayList<Producto> productos, Scanner sc) {
