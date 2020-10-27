@@ -46,6 +46,7 @@ public class Principal {
 
 		} while (Character.toUpperCase(resp) != 'A' && Character.toUpperCase(resp) != 'B'
 				&& Character.toUpperCase(resp) != 'C');
+		sc.close();
 	}
 
 	private static void opcionC(Scanner sc, ArrayList<Producto> productos) {
@@ -111,7 +112,7 @@ public class Principal {
 
 		if (!(Character.toUpperCase(opc) != 'A' && Character.toUpperCase(opc) != 'B'
 				&& Character.toUpperCase(opc) != 'C')) {
-			switch (opc) {
+			switch (Character.toUpperCase(opc)) {
 			case OPC_A:
 				discoduro(sc, productos);
 				break;
