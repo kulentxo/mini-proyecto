@@ -50,8 +50,7 @@ public class Principal {
 				break;
 
 			case OPC_B:
-				// TODO opcion b
-				opcionB(productos);
+				opcionB(productos, sc);
 				break;
 
 			case OPC_C:
@@ -67,8 +66,20 @@ public class Principal {
 				&& Character.toUpperCase(resp) != 'C');
 	}
 
-	private static void opcionB(ArrayList<Producto> productos) {
-		// TODO Para terminar apartado B
+	private static void opcionB(ArrayList<Producto> productos, Scanner sc) {
+		// TODO faltan los try catch
+		int pos;
+		for (Producto producto : productos) {
+			if (producto instanceof Producto) {
+				System.out.println("Referencia: " + producto.getReferencia());
+			}
+		}
+		System.out.println("Cual es el producto que quieres vender?(Introduce la posicion del producto)");
+		pos = Integer.parseInt(sc.nextLine());
+
+		productos.remove(pos - 1);
+
+		System.out.println("Verifica que el producto se ha vendido");
 		for (Producto producto : productos) {
 			if (producto instanceof Producto) {
 				System.out.println("Referencia: " + producto.getReferencia());
