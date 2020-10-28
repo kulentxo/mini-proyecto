@@ -50,49 +50,55 @@ public class Principal {
 	}
 
 	private static void opcionC(Scanner sc, ArrayList<Producto> productos) {
-		// TODO faltan los try catch
+
 		int opc;
 		mostrarMenuC();
 		opc = Integer.parseInt(sc.nextLine());
 		switch (opc) {
 		case 1:
 			servicioDomicilio domicilio = new servicioDomicilio();
+			try {
+				System.out.println("Introduce una referencia");
+				domicilio.setReferencia(sc.nextLine());
 
-			System.out.println("Introduce una referencia");
-			domicilio.setReferencia(sc.nextLine());
+				System.out.println("Introduce precio");
+				domicilio.setPrecio(Float.parseFloat(sc.nextLine()));
 
-			System.out.println("Introduce precio");
-			domicilio.setPrecio(Float.parseFloat(sc.nextLine()));
+				System.out.println("Introduce el codigo");
+				domicilio.setCodigo(Integer.parseInt(sc.nextLine()));
 
-			System.out.println("Introduce el codigo");
-			domicilio.setCodigo(Integer.parseInt(sc.nextLine()));
+				System.out.println("Introduce las horas minimas");
+				domicilio.setMinimoHoras(Integer.parseInt(sc.nextLine()));
 
-			System.out.println("Introduce las horas minimas");
-			domicilio.setMinimoHoras(Integer.parseInt(sc.nextLine()));
-
-			System.out.println("Introduce el gasto adicional");
-			domicilio.setGastoAdicional(Float.parseFloat(sc.nextLine()));
+				System.out.println("Introduce el gasto adicional");
+				domicilio.setGastoAdicional(Float.parseFloat(sc.nextLine()));
+			} catch (Exception e) {
+				System.out.println("Error al introducir los datos");
+			}
 
 			productos.add(domicilio);
 			break;
 		case 2:
 			servicioTienda tienda = new servicioTienda();
 
-			System.out.println("Introduce una referencia");
-			tienda.setReferencia(sc.nextLine());
+			try {
+				System.out.println("Introduce una referencia");
+				tienda.setReferencia(sc.nextLine());
 
-			System.out.println("Introduce precio");
-			tienda.setPrecio(Float.parseFloat(sc.nextLine()));
+				System.out.println("Introduce precio");
+				tienda.setPrecio(Float.parseFloat(sc.nextLine()));
 
-			System.out.println("Introduce el codigo");
-			tienda.setCodigo(Integer.parseInt(sc.nextLine()));
+				System.out.println("Introduce el codigo");
+				tienda.setCodigo(Integer.parseInt(sc.nextLine()));
 
-			System.out.println("Introduce las horas minimas");
-			tienda.setMinimoHoras(Integer.parseInt(sc.nextLine()));
+				System.out.println("Introduce las horas minimas");
+				tienda.setMinimoHoras(Integer.parseInt(sc.nextLine()));
 
-			System.out.println("Introduce el empleado");
-			tienda.setEmpleado(sc.nextLine());
-
+				System.out.println("Introduce el empleado");
+				tienda.setEmpleado(sc.nextLine());
+			} catch (Exception e) {
+				System.out.println("Error al introducir los datos");
+			}
 			productos.add(tienda);
 			break;
 		default:
@@ -132,15 +138,18 @@ public class Principal {
 	}
 
 	private static void opcionB(ArrayList<Producto> productos, Scanner sc) {
-		// TODO faltan los try catch
-		int pos;
+		int pos = 0;
 		for (Producto producto : productos) {
 			if (producto instanceof Producto) {
 				System.out.println("Referencia: " + producto.getReferencia());
 			}
 		}
-		System.out.println("Cual es el producto que quieres vender?(Introduce la posicion del producto)");
-		pos = Integer.parseInt(sc.nextLine());
+		try {
+			System.out.println("Cual es el producto que quieres vender?(Introduce la posicion del producto)");
+			pos = Integer.parseInt(sc.nextLine());
+		} catch (Exception e) {
+			System.out.println("Error tienes que introducir un numero");
+		}
 
 		productos.remove(pos - 1);
 
@@ -154,61 +163,74 @@ public class Principal {
 	}
 
 	private static void procesador(Scanner sc, ArrayList<Producto> productos) {
-		// TODO faltan los try catch
+
 		Procesador procesador = new Procesador();
 
-		System.out.println("Introduce una referencia");
-		procesador.setReferencia(sc.nextLine());
+		try {
+			System.out.println("Introduce una referencia");
+			procesador.setReferencia(sc.nextLine());
 
-		System.out.println("Introduce precio");
-		procesador.setPrecio(Float.parseFloat(sc.nextLine()));
+			System.out.println("Introduce precio");
+			procesador.setPrecio(Float.parseFloat(sc.nextLine()));
 
-		System.out.println("Introduce el modelo");
-		procesador.setModelo(sc.nextLine());
+			System.out.println("Introduce el modelo");
+			procesador.setModelo(sc.nextLine());
 
-		System.out.println("Introduce la velocidad");
-		procesador.setVelocidad(Float.parseFloat(sc.nextLine()));
+			System.out.println("Introduce la velocidad");
+			procesador.setVelocidad(Float.parseFloat(sc.nextLine()));
+		} catch (Exception e) {
+			System.out.println("Error al introducir los datos");
+		}
 
 		productos.add(procesador);
 	}
 
 	private static void grafica(Scanner sc, ArrayList<Producto> productos) {
-		// TODO faltan los try catch
+
 		Grafica grafica = new Grafica();
 
-		System.out.println("Introduce una referencia");
-		grafica.setReferencia(sc.nextLine());
+		try {
+			System.out.println("Introduce una referencia");
+			grafica.setReferencia(sc.nextLine());
 
-		System.out.println("Introduce precio");
-		grafica.setPrecio(Float.parseFloat(sc.nextLine()));
+			System.out.println("Introduce precio");
+			grafica.setPrecio(Float.parseFloat(sc.nextLine()));
 
-		System.out.println("Introduce la memoria");
-		grafica.setMemoria(Integer.parseInt(sc.nextLine()));
+			System.out.println("Introduce la memoria");
+			grafica.setMemoria(Integer.parseInt(sc.nextLine()));
 
-		System.out.println("Introduce la conexion");
-		grafica.setConexion(sc.nextLine());
+			System.out.println("Introduce la conexion");
+			grafica.setConexion(sc.nextLine());
+		} catch (Exception e) {
+			System.out.println("Error al introducir los datos");
+		}
 
 		productos.add(grafica);
 	}
 
 	private static void discoduro(Scanner sc, ArrayList<Producto> productos) {
-		// TODO faltan los try catch
-		char resp;
+
+		char resp = 0;
 		discoDuro disco = new discoDuro();
-		System.out.println("Introduce una referencia");
-		disco.setReferencia(sc.nextLine());
 
-		System.out.println("Introduce precio");
-		disco.setPrecio(Float.parseFloat(sc.nextLine()));
+		try {
+			System.out.println("Introduce una referencia");
+			disco.setReferencia(sc.nextLine());
 
-		System.out.println("Introduce la capacidad");
-		disco.setCapacidad(Integer.parseInt(sc.nextLine()));
+			System.out.println("Introduce precio");
+			disco.setPrecio(Float.parseFloat(sc.nextLine()));
 
-		System.out.println("Introduce la velocidad");
-		disco.setVelocidad(Float.parseFloat(sc.nextLine()));
+			System.out.println("Introduce la capacidad");
+			disco.setCapacidad(Integer.parseInt(sc.nextLine()));
 
-		System.out.println("Es un SSD?");
-		resp = sc.nextLine().charAt(0);
+			System.out.println("Introduce la velocidad");
+			disco.setVelocidad(Float.parseFloat(sc.nextLine()));
+
+			System.out.println("Es un SSD?");
+			resp = sc.nextLine().charAt(0);
+		} catch (Exception e) {
+			System.out.println("Error al introducir los datos");
+		}
 
 		if (Character.toUpperCase(resp) == 'S') {
 			disco.setSSD(true);
